@@ -40,10 +40,15 @@ object MyModule {
     calcFibonacci(0, 1, n)
   }
 
+  private def formatResult(x: Int, what: String, funzione: Int => Int) = {
+    val msg = "The %s of %d is %d"
+    msg.format(what, x, funzione(x))
+  }
+
 
   def main(args: Array[String]): Unit = {
-    println(formatAbs(-42))
-    println(formatFibonacci(5))
+    println(formatResult(-42, "Absolute", abs))
+    println(formatResult(7, "Fibonnaci", fib))
   }
 
 }
