@@ -48,7 +48,7 @@ object MyModule {
 
   /*
    *
-   *  due bianchi per uno verde
+   * due bianchi per uno verde
    * tre verdi per uno blu
    * quattro blu per uno azzurro
    * cinque azzurri per uno viola
