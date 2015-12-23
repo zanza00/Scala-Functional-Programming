@@ -46,9 +46,41 @@ object MyModule {
   }
 
 
+  /*
+   *
+   *  due bianchi per uno verde
+   * tre verdi per uno blu
+   * quattro blu per uno azzurro
+   * cinque azzurri per uno viola
+   *
+   * quanti bianchi per uno viola?
+   *
+   * 1	2  <--
+   * 2  6
+   * 3	24
+   * 4	120
+   * 5	720
+   * 6	5040
+   * 7	40320
+   * 8	362880
+   * 9	3628800
+   * 10	39916800
+   */
+  def colorProgression(n: Int): Int = {
+    @annotation.tailrec
+    def loop(count: Int, current: Int, total: Int): Int =
+      if (count == n) total
+      else loop(count + 1, current + 1,
+        total * (2 + current)
+      )
+    loop(1, 1, 2)
+  }
+
+
   def main(args: Array[String]): Unit = {
     println(formatResult(-42, "Absolute", abs))
     println(formatResult(7, "Fibonnaci", fib))
+    println(formatResult(5, "color progression", colorProgression))
   }
 
 }
