@@ -70,9 +70,7 @@ object MyModule {
     @annotation.tailrec
     def loop(count: Int, current: Int, total: Int): Int =
       if (count == n) total
-      else loop(count + 1, current + 1,
-        total * (2 + current)
-      )
+      else loop(count + 1, current + 1,total * (2 + current))
     loop(1, 1, 2)
   }
 
