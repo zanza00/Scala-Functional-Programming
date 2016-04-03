@@ -1,5 +1,5 @@
 # Scala-Functional-Programming
 
-This repo is for tracking of the exercise of the "Red Book of Scala"
+This repo is for tracking of the exercise of the _Red Book of Scala_
 
-https://goo.gl/photos/HGHEmeDacg68U1QW8
+![some photo](http://i.imgur.com/3ARJRPX.jpg?1)
