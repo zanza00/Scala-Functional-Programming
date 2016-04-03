@@ -70,15 +70,18 @@ object MyModule {
     @annotation.tailrec
     def loop(count: Int, current: Int, total: Int): Int =
       if (count == n) total
-      else loop(count + 1, current + 1,total * (2 + current))
+      else loop(count + 1, current + 1, total * (2 + current))
     loop(1, 1, 2)
   }
 
 
   def main(args: Array[String]): Unit = {
-    println(formatResult(-42, "Absolute", abs))
-    println(formatResult(7, "Fibonnaci", fib))
-    println(formatResult(5, "color progression", colorProgression))
+    //    println(formatResult(-42, "Absolute", abs))
+    //    println(formatResult(7, "Fibonnaci", fib))
+    //    println(formatResult(5, "color progression", colorProgression))
+    List(1, 2, 3, 4, 5, 6, 7).foreach { x => println(formatResult(x, "Fibonnaci", fib)) }
+    println("-----")
+    for(a <- 1 to 10){ println(formatResult(a, "Fibonnaci", fib)) }
   }
 
 }
