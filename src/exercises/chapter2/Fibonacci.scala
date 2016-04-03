@@ -79,6 +79,24 @@ object MyModule {
     loop(0)
   }
 
+  //follow the types
+  def partial1[A, BO, C](a: A, f: (A, BO) => C): BO => C = {
+    b => f(a, b)
+  }
+
+  def curry[A, B, C](f: (A, B) => C): A => (B => C) = {
+    a => b => f(a, b)
+  }
+
+  def uncurry[A, B, C](f: A => (B => C)): (A, B) => C = {
+    (a, b) => f(a)(b)
+  }
+
+  def compose[A, B, C](f: B => C, g: A => B): A => C = {
+    a => f(g(a))
+//    f compose g
+  }
+
 
   /*
    *
@@ -113,11 +131,13 @@ object MyModule {
     //    println(formatResult(-42, "Absolute", abs))
     //    println(formatResult(7, "Fibonnaci", fib))
     //    println(formatResult(5, "color progression", colorProgression))
-    List(1, 2, 3, 4, 5, 6, 7).foreach { x => println(formatResult(x, "Fibonnaci", fib)) }
+    //    List(1, 2, 3, 4, 5, 6, 7).foreach { x => println(formatResult(x, "Fibonnaci", fib)) }
     println("-----")
     for (a <- 1 to 10) {
       println(formatResult(a, "Fibonnaci", fib))
     }
+    println("-----")
+    println(findFirst(Array(7, 9, 13), (x: Int) => x == 9))
   }
 
 }
