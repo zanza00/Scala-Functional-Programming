@@ -30,6 +30,7 @@ object MyModule {
 
   /*
   * 0,1,1,2,3,5,8
+  * Exercise 2.1
   * */
   def fib(n: Int): Int = {
     @annotation.tailrec
@@ -43,6 +44,38 @@ object MyModule {
   private def formatResult(x: Int, what: String, funzione: Int => Int) = {
     val msg = "The %s of %d is %d"
     msg.format(what, x, funzione(x))
+  }
+
+  /*
+   * This method accept only an array of string
+   */
+  def findFirstArStr(ss: Array[String], key: String): Int = {
+    @annotation.tailrec
+    def loop(n: Int): Int =
+      if (n >= ss.length) -1
+      else if (ss(n) == key) n
+      else loop(n + 1)
+
+    loop(0)
+  }
+
+  def findFirst[A] (as:Array[A], p: A => Boolean) : Int = {
+    @annotation.tailrec
+    def loop(n:Int): Int =
+      if (n >= as.length) -1
+      else if (p(as(n))) n
+      else loop(n + 1)
+
+    loop(0)
+  }
+
+  def isSorted[A](as: Array[A], ordered: (A,A) => Boolean): Boolean = {
+    def loop(n: Int): Boolean =
+      if (n >= as.length -1 ) false
+      else if (ordered(as(n + 1),as(n))) true
+      else loop(n + 1)
+
+    loop(0)
   }
 
 
@@ -81,7 +114,9 @@ object MyModule {
     //    println(formatResult(5, "color progression", colorProgression))
     List(1, 2, 3, 4, 5, 6, 7).foreach { x => println(formatResult(x, "Fibonnaci", fib)) }
     println("-----")
-    for(a <- 1 to 10){ println(formatResult(a, "Fibonnaci", fib)) }
+    for (a <- 1 to 10) {
+      println(formatResult(a, "Fibonnaci", fib))
+    }
   }
 
 }
