@@ -34,12 +34,28 @@ object List {
     case _ => 101
   }
 
-  def tail[A](l :List[A]): List[A] = l match {
+  def tail[A](l: List[A]): List[A] = l match {
     case Nil => Nil
-    case Cons(_,t) => t
+    case Cons(_, t) => t
   }
 
+  def setHead[A](l: List[A], n: A): List[A] = l match {
+    case Nil => Nil
+    case Cons(_, t) => Cons(n, t)
+  }
 
+  def drop[A](l: List[A], n: Int): List[A] =
+    if (n == 0) l
+    else l match {
+      case Nil => Nil
+      case Cons(_, t) => drop(l, n - 1)
+    }
+
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] =
+    l match {
+      case Cons(h, t) if f(h) => dropWhile(t, f)
+      case _ => l
+    }
 
 }
 
