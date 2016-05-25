@@ -79,4 +79,16 @@ object List {
   val xsi: List[Int] = List(1, 2, 3, 4, 5, 6)
   val exi1 = dropWhileInfer(xs)(x => x < 4)
   //exi1 = List(4, 5, 6)
+
+  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B =
+    as match {
+      case Nil => z
+      case Cons(x, xs) => f(x, foldRight(xs, z)(f))
+    }
+
+  def sum2(ns: List[Int]) =
+    foldRight(ns, 0)((x, y) => x + y)
+
+  def product2(ns: List[Double]) =
+    foldRight(ns, 1.0)((x, y) => x * y)
 }
