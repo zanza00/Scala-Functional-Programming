@@ -3,7 +3,6 @@ package exercises.chapter2
 /**
   * Created by Zanza on 21/12/2015.
   */
-
 object MyModule {
 
   def abs(n: Int): Int =
@@ -29,9 +28,9 @@ object MyModule {
   }
 
   /*
-  * 0,1,1,2,3,5,8
-  * Exercise 2.1
-  * */
+   * 0,1,1,2,3,5,8
+   * Exercise 2.1
+   * */
   def fib(n: Int): Int = {
     @annotation.tailrec
     def calcFibonacci(firstNumber: Int, secondNumber: Int, n: Int): Int =
@@ -80,23 +79,22 @@ object MyModule {
   }
 
   //follow the types
-  def partial1[A, BO, C](a: A, f: (A, BO) => C): BO => C = {
-    b => f(a, b)
+  def partial1[A, BO, C](a: A, f: (A, BO) => C): BO => C = { b =>
+    f(a, b)
   }
 
-  def curry[A, B, C](f: (A, B) => C): A => (B => C) = {
-    a => b => f(a, b)
+  def curry[A, B, C](f: (A, B) => C): A => (B => C) = { a => b =>
+    f(a, b)
   }
 
-  def uncurry[A, B, C](f: A => (B => C)): (A, B) => C = {
-    (a, b) => f(a)(b)
+  def uncurry[A, B, C](f: A => (B => C)): (A, B) => C = { (a, b) =>
+    f(a)(b)
   }
 
-  def compose[A, B, C](f: B => C, g: A => B): A => C = {
-    a => f(g(a))
+  def compose[A, B, C](f: B => C, g: A => B): A => C = { a =>
+    f(g(a))
 //    f compose g
   }
-
 
   /*
    *
@@ -126,7 +124,6 @@ object MyModule {
     loop(1, 1, 2)
   }
 
-
   def main(args: Array[String]): Unit = {
     //    println(formatResult(-42, "Absolute", abs))
     //    println(formatResult(7, "Fibonnaci", fib))
@@ -139,12 +136,6 @@ object MyModule {
     println("-----")
     println(findFirst(Array(7, 9, 13), (x: Int) => x == 9))
   }
-
 }
 
-class Fibonacci {
-
-}
-
-
-
+class Fibonacci {}
