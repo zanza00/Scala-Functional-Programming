@@ -91,4 +91,32 @@ object List {
 
   def product2(ns: List[Double]) =
     foldRight(ns, 1.0)((x, y) => x * y)
+
+  //3.7
+  /*
+  fold right that immediately halt if 0.0 is encountered and return 0.0
+  I think it has to do with evaluation but i cannot focus right now
+  //TODO return here after chapter 5
+   */
+
+  //3.8
+  /*
+  foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_))
+  
+  <console>:16: error: type mismatch;
+              found   : List[Int]
+              required: List[?]
+              foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_))
+  //TODO why ????
+   */
+
+  def lenght[A](as: List[A]): Int =
+    foldRight(as, 0)((_, x) => x + 1)
+
+  @annotation.tailrec
+  def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B =
+    l match {
+      case Nil => z
+      case Cons(h,t) => foldLeft(t, f(z,h))(f)
+    }
 }
